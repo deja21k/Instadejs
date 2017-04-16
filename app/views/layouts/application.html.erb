@@ -29,6 +29,9 @@
                         <%= link_to "New Post", new_post_path %>
                     </li>
                     <%- if current_user %>
+                    <li>
+                      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+                    </li>
                     <% else %>
                     <li>
                       <%= link_to "Login", new_user_session_path %>
@@ -47,6 +50,11 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
+          <% flash.each do |a, b| %>
+            <div class="alert alert-success">
+            <%= b %>
+            </div>
+          <% end %>
           <%= yield %>
         </div>
       </div>
